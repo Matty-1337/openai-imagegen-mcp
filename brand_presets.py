@@ -2,18 +2,23 @@ BRAND_PRESETS = {
     "coretap": {
         "name": "CoreTAP",
         "prompt_prefix": (
-            "Dark-first premium aesthetic. Background: deep black (#0A0E1A). "
-            "Lighting: neon cyan (#40F0F0) as primary accent light, "
-            "hot magenta (#E040C0) as secondary accent/backlight. "
-            "Color palette: cyan, magenta, electric orange, deep navy. "
-            "Mood: Bloomberg terminal meets upscale bar. "
-            "Premium, data-driven, moody, cinematic. "
-            "The image should look like it's glowing and pulsing with energy. "
+            "Dark-first premium aesthetic inspired by GTA Vice City neon. "
+            "Background: deep black (#0A0E1A). "
+            "Lighting: neon gradient glow where hot magenta (#E040C0) and neon cyan (#40F0F0) "
+            "BLEND and FLOW into each other — not flat separate colors. "
+            "The magenta and cyan should create smooth luminous gradients with soft glowing halos. "
+            "Think warm pink fading into cool blue with light bleeding at the edges. "
+            "Additional accent colors: electric orange (#E87030), orbital purple (#7830A8). "
+            "Mood: Vice City meets Bloomberg terminal meets upscale bar. "
+            "Premium, data-driven, moody, cinematic, GLOWING. "
+            "Colors should feel alive and pulsing with neon energy, not flat or matte. "
         ),
         "prompt_suffix": (
             "High resolution, professional photography quality, "
-            "shallow depth of field, dramatic lighting, film grain subtle. "
-            "No text overlays. No watermarks. Clean composition."
+            "shallow depth of field, dramatic neon gradient lighting, subtle film grain. "
+            "Soft luminous glow effects around light sources. "
+            "No text overlays. No watermarks. Clean composition. "
+            "Colors blend smoothly — never harsh or separated."
         ),
         "styles": {
             "photorealistic": "Photorealistic editorial photography style. ",
