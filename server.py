@@ -159,5 +159,7 @@ async def img_list_presets() -> str:
 if __name__ == "__main__":
     import os
 
-    port = int(os.getenv("PORT", "8000"))
-    mcp.run(transport="sse", port=port)
+    # FastMCP reads port/host from FASTMCP_PORT / FASTMCP_HOST env vars
+    os.environ.setdefault("FASTMCP_PORT", os.getenv("PORT", "8000"))
+    os.environ.setdefault("FASTMCP_HOST", "0.0.0.0")
+    mcp.run(transport="sse")
