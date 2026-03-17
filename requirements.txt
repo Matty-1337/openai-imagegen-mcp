@@ -1,0 +1,5 @@
+openai>=1.40.0
+mcp>=1.6.0
+httpx
+pydantic>=2.0
+uvicorn
