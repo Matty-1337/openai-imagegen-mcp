@@ -1,15 +1,15 @@
 import os
 
-# Must set env vars BEFORE FastMCP is instantiated (it reads Settings at init time)
-os.environ.setdefault("FASTMCP_PORT", os.getenv("PORT", "8000"))
-os.environ.setdefault("FASTMCP_HOST", "0.0.0.0")
-
 from mcp.server.fastmcp import FastMCP
 
 from brand_presets import BRAND_PRESETS, PLATFORM_SIZES
 from client import generate_image
 
-mcp = FastMCP("openai_imagegen")
+mcp = FastMCP(
+    "openai_imagegen",
+    host="0.0.0.0",
+    port=int(os.getenv("PORT", "8000")),
+)
 
 
 @mcp.tool(
