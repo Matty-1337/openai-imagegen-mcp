@@ -1,3 +1,4 @@
+"""OpenAI Image Generation MCP Server for CoreTAP content pipeline."""
 import os
 
 from mcp.server.fastmcp import FastMCP
