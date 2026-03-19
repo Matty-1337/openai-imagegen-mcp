@@ -17,8 +17,9 @@ BRAND_PRESETS = {
             "High resolution, professional photography quality, "
             "shallow depth of field, dramatic neon gradient lighting, subtle film grain. "
             "Soft luminous glow effects around light sources. "
-            "No text overlays. No watermarks. Clean composition. "
-            "Colors blend smoothly — never harsh or separated."
+            "No text overlays. No watermarks. No logos. Clean composition. "
+            "Colors blend smoothly — never harsh or separated. "
+            "Leave the bottom 20% of the image as clean empty dark space with no text, logos, or graphics."
         ),
         "styles": {
             "photorealistic": "Photorealistic editorial photography style. ",
@@ -36,7 +37,8 @@ BRAND_PRESETS = {
         ),
         "prompt_suffix": (
             "High resolution, professional quality, clean composition. "
-            "No text overlays. No watermarks."
+            "No text overlays. No watermarks. No logos. "
+            "Leave the bottom 20% of the image as clean empty dark space with no text, logos, or graphics."
         ),
         "styles": {
             "photorealistic": "Photorealistic professional photography. ",
@@ -54,7 +56,8 @@ BRAND_PRESETS = {
         ),
         "prompt_suffix": (
             "High resolution, sports photography quality. "
-            "No text overlays. No watermarks."
+            "No text overlays. No watermarks. No logos. "
+            "Leave the bottom 20% of the image as clean empty dark space with no text, logos, or graphics."
         ),
         "styles": {
             "photorealistic": "Sports photography style. ",

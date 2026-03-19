@@ -3,3 +3,5 @@ mcp>=1.6.0
 httpx
 pydantic>=2.0
 uvicorn
+Pillow>=10.0.0
+numpy>=1.24.0
