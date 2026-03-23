@@ -1,6 +1,7 @@
 """OpenAI Image Generation MCP Server for CoreTAP content pipeline."""
 
 import base64
+import json
 import os
 import uuid
 
@@ -53,6 +54,68 @@ async def serve_image(request: Request) -> Response:
     if not os.path.isfile(filepath):
         return Response("Not found", status_code=404)
     return FileResponse(filepath, media_type="image/png")
+
+
+@mcp.custom_route("/generate", methods=["POST"])
+async def rest_generate(request: Request) -> Response:
+    """REST API for ProjectOps (bulk-approve, generate-image, autopilot).
+
+    JSON body: prompt (required), optional brand, size, quality, background, composite, logos.
+    Returns: {"url": "...", "image_url": "...", "size": "..."}
+    """
+    try:
+        body = await request.json()
+    except Exception:
+        return Response(
+            json.dumps({"error": "Invalid JSON"}),
+            status_code=400,
+            media_type="application/json",
+        )
+
+    prompt = (body.get("prompt") or "").strip()
+    if not prompt:
+        return Response(
+            json.dumps({"error": "prompt is required"}),
+            status_code=400,
+            media_type="application/json",
+        )
+
+    brand = body.get("brand")
+    size = body.get("size", "1024x1024")
+    quality = body.get("quality", "high")
+    background = body.get("background", "auto")
+    composite = body.get("composite", True)
+    logos = body.get("logos", "both")
+
+    full_prompt = prompt
+    if brand and brand in BRAND_PRESETS:
+        preset = BRAND_PRESETS[brand]
+        full_prompt = preset["prompt_prefix"] + prompt + " " + preset["prompt_suffix"]
+
+    try:
+        result = await generate_image(
+            prompt=full_prompt, size=size, quality=quality, background=background
+        )
+        raw_bytes = base64.b64decode(result["image_base64"])
+        final_bytes = _apply_composite(raw_bytes, composite, logos)
+        image_url = _save_image(final_bytes)
+    except Exception as e:
+        return Response(
+            json.dumps({"error": str(e)}),
+            status_code=500,
+            media_type="application/json",
+        )
+
+    return Response(
+        json.dumps(
+            {
+                "url": image_url,
+                "image_url": image_url,
+                "size": result.get("size"),
+            }
+        ),
+        media_type="application/json",
+    )
 
 
 @mcp.tool(
